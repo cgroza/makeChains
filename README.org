@@ -1,8 +1,8 @@
 * Usage:
 
-#+BEGIN_VERBATIM
+#+BEGIN_SRC sh
 perl makeChains orig2bit orig_build orig_chrom_sizes new2bit new_build new_chrom_sizes chain_out
-#+END_VERBATIM
+#+END_SRC
 
 ** What the parameters do
 
@@ -32,3 +32,14 @@ perl makeChains orig2bit orig_build orig_chrom_sizes new2bit new_build new_chrom
 
 ** To obtain chain file
    Run jobs/merge_chains.sh from the parent directory of the jobs directory. It will produce chain_out in the current directory.
+
+* Example run
+#+BEGIN_SRC sh
+perl makeChains.pl  S00KFVD_maternal_sv.2bit S00KFVD/maternal S00KFVD_maternal_sv.chrom.sizes \
+        $GS_HOME/BP_grocsv/GRCh38/genome.2bit \
+        $GS_HOME/BP_grocsv/GRCh38/ \
+        $GS_HOME/BP_grocsv/GRCh38/genome.chrom.sizes \
+        MaternalSVToGRCh38.chain
+#+END_SRC
+
+Where $GS_HOME is my own project directory.
