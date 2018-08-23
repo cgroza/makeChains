@@ -1,0 +1,34 @@
+* Usage:
+
+#+BEGIN_VERBATIM
+perl makeChains orig2bit orig_build orig_chrom_sizes new2bit new_build new_chrom_sizes chain_out
+#+END_VERBATIM
+
+** What the parameters do
+
+ | Related to the old origin assembly:     |                                                                                                                  |
+ | orig2bit                                | 2bit file relative to $orig_build directory of original genome fasta                                             |
+ | orig_build                              | directory holding files of original genome                                                                       |
+ | orig_chrom_sizes                        | .chrom.sizes file relative to $orig_build directory                                                              |
+ | Relate to the new destination assembly: |                                                                                                                  |
+ | new2bit                                 | 2bit file relative to $new_build directory of new genome fasta                                                   |
+ | new_build                               | directory holding files of new genome. Must also contain new fasta as contigs in separate files with chr* prefix |
+ | new_chrom_sizes                         | .chrom.sizes file relative to $new_build directory                                                               |
+ | chain_out                               | final chain filename                                                                                             |
+
+** Notes on build directories
+   These directories must hold at a minimum:
+   - 2bit version of the genome FASTA file
+   - .chrom.sizes files of the genomes. Create this file from the FASTA index file created by samtools faidx.
+
+** Notes on new_build directory
+   This directory is special because it must hold the contigs of the destination assembly in separate files with chr* prefixed filenames.
+   The script will iterate through the chr* files and create a job submission for each files
+
+** Directory structure
+   - temp  contains all the temporary files of the script
+   - chain will contain per contig chain files
+   - jobs contains the generated shell scripts
+
+** To obtain chain file
+   Run jobs/merge_chains.sh from the parent directory of the jobs directory. It will produce chain_out in the current directory.
