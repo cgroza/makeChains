@@ -23,7 +23,7 @@ perl makeChains orig2bit orig_build orig_chrom_sizes new2bit new_build new_chrom
 
 ** Notes on new_build directory
    This directory is special because it must hold the contigs of the destination assembly in separate files with chr* prefixed filenames.
-   The script will iterate through the chr* files and create a job submission for each files
+   The script will iterate through the chr* files and create a job submission for each file.
 
 ** Directory structure
    - temp  contains all the temporary files of the script
